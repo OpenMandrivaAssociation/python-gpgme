@@ -7,11 +7,10 @@ Version:        0.1
 Release:        %mkrel 1
 Summary:        Python module for working with OpenPGP messages
 
-Group:          Development/Languages
+Group:          Development/Python
 License:        LGPLv2+
 URL:            http://cheeseshop.python.org/pypi/pygpgme/0.1
 Source0:        http://cheeseshop.python.org/packages/source/p/%{mname}/%{mname}-%{version}.tar.gz
-Patch0:         pygpgme-0.1-py23.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:  python-devel
 BuildRequires:  gpgme-devel
