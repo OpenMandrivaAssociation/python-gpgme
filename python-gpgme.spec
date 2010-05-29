@@ -4,13 +4,16 @@
 
 Name:           python-gpgme
 Version:        0.1
-Release:        %mkrel 2
+Release:        %mkrel 3
 Summary:        Python module for working with OpenPGP messages
 
 Group:          Development/Python
 License:        LGPLv2+
 URL:            http://cheeseshop.python.org/pypi/pygpgme/0.1
 Source0:        http://cheeseshop.python.org/packages/source/p/%{mname}/%{mname}-%{version}.tar.gz
+# upstream patch to fix gpgme intialization
+# https://bugs.launchpad.net/pygpgme/+bug/452194
+Patch0:         python-gpgme-0.1-fix-gpgme-initialization.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:  python-devel
 BuildRequires:  gpgme-devel
@@ -22,6 +25,7 @@ the GPGME library.
 
 %prep
 %setup -q -n %{mname}-%{version}
+%patch0 -p0
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
@@ -40,4 +44,3 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,-)
 %doc README PKG-INFO
 %{python_sitearch}/*
-
