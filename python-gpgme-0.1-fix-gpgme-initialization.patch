@@ -1,0 +1,26 @@
+--- src/gpgme.c.orig	2006-02-14 06:04:56.000000000 +0200
++++ src/gpgme.c	2010-05-27 17:00:20.115118723 +0300
+@@ -29,6 +29,7 @@
+ PyMODINIT_FUNC
+ init_gpgme(void)
+ {
++    const char *gpgme_version;
+     PyObject *mod;
+ 
+     pygpgme_error = PyErr_NewException("gpgme.GpgmeError",
+@@ -72,4 +73,15 @@
+ 
+     Py_INCREF(pygpgme_error);
+     PyModule_AddObject(mod, "GpgmeError", pygpgme_error);
++ 
++    gpgme_version = gpgme_check_version(NULL);
++    if (gpgme_version == NULL) {
++        PyErr_SetString(PyExc_ImportError, "Unable to initialize gpgme.");
++        Py_DECREF(mod);
++        return NULL;
++    }
++    PyModule_AddObject(mod, "gpgme_version",
++                       PyString_FromString(gpgme_version));
++
++     return mod;
+ }
