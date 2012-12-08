@@ -32,15 +32,36 @@ CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
 
 
 %install
-rm -rf %{buildroot}
-%{__python} setup.py install -O1 --skip-build --root %{buildroot}
+rm -rf $RPM_BUILD_ROOT
+%{__python} setup.py install -O1 --skip-build --root $RPM_BUILD_ROOT
 # No need to ship the tests
-rm -rf %{buildroot}%{python_sitearch}/gpgme/tests/
+rm -rf $RPM_BUILD_ROOT%{python_sitearch}/gpgme/tests/
 
 %clean
-rm -rf %{buildroot}
+rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
 %doc README PKG-INFO
 %{python_sitearch}/*
+
+
+%changelog
+* Thu May 05 2011 Oden Eriksson <oeriksson@mandriva.com> 0.1-4mdv2011.0
++ Revision: 667934
+- mass rebuild
+
+* Sat May 29 2010 Ahmad Samir <ahmadsamir@mandriva.org> 0.1-3mdv2011.0
++ Revision: 546562
+- add upstream patch to fix gpgme intialization mdv #59361
+
+* Tue Sep 15 2009 Thierry Vignaud <tv@mandriva.org> 0.1-2mdv2010.0
++ Revision: 442146
+- rebuild
+
+* Mon Jun 30 2008 Alexander Kurtakov <akurtakov@mandriva.org> 0.1-1mdv2009.0
++ Revision: 230135
+- fix group, remove unused patch
+- import python-gpgme
+
+
