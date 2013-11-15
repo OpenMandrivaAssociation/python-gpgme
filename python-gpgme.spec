@@ -2,21 +2,19 @@
 %define python_compile     python -c "import compileall; compileall.compile_dir('.')"
 %define mname pygpgme
 
-Name:           python-gpgme
-Version:        0.1
-Release:        %mkrel 4
-Summary:        Python module for working with OpenPGP messages
-
-Group:          Development/Python
-License:        LGPLv2+
-URL:            http://cheeseshop.python.org/pypi/pygpgme/0.1
-Source0:        http://cheeseshop.python.org/packages/source/p/%{mname}/%{mname}-%{version}.tar.gz
+Summary:	Python module for working with OpenPGP messages
+Name:		python-gpgme
+Version:	0.1
+Release:	4
+Group:		Development/Python
+License:	LGPLv2+
+Url:		http://cheeseshop.python.org/pypi/pygpgme/0.1
+Source0:	http://cheeseshop.python.org/packages/source/p/%{mname}/%{mname}-%{version}.tar.gz
 # upstream patch to fix gpgme intialization
 # https://bugs.launchpad.net/pygpgme/+bug/452194
-Patch0:         python-gpgme-0.1-fix-gpgme-initialization.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
-BuildRequires:  python-devel
-BuildRequires:  gpgme-devel
+Patch0:		python-gpgme-0.1-fix-gpgme-initialization.patch
+BuildRequires:	gpgme-devel
+BuildRequires:	pkgconfig(python)
 
 %description
 PyGPGME is a Python module that lets you sign, verify, encrypt and decrypt
@@ -24,7 +22,7 @@ files using the OpenPGP format.  It is built on top of GNU Privacy Guard and
 the GPGME library.
 
 %prep
-%setup -q -n %{mname}-%{version}
+%setup -qn %{mname}-%{version}
 %patch0 -p0
 
 %build
@@ -32,36 +30,11 @@ CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
 
 
 %install
-rm -rf $RPM_BUILD_ROOT
-%{__python} setup.py install -O1 --skip-build --root $RPM_BUILD_ROOT
+%{__python} setup.py install -O1 --skip-build --root %{buildroot}
 # No need to ship the tests
-rm -rf $RPM_BUILD_ROOT%{python_sitearch}/gpgme/tests/
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}%{python_sitearch}/gpgme/tests/
 
 %files
-%defattr(-,root,root,-)
 %doc README PKG-INFO
 %{python_sitearch}/*
-
-
-%changelog
-* Thu May 05 2011 Oden Eriksson <oeriksson@mandriva.com> 0.1-4mdv2011.0
-+ Revision: 667934
-- mass rebuild
-
-* Sat May 29 2010 Ahmad Samir <ahmadsamir@mandriva.org> 0.1-3mdv2011.0
-+ Revision: 546562
-- add upstream patch to fix gpgme intialization mdv #59361
-
-* Tue Sep 15 2009 Thierry Vignaud <tv@mandriva.org> 0.1-2mdv2010.0
-+ Revision: 442146
-- rebuild
-
-* Mon Jun 30 2008 Alexander Kurtakov <akurtakov@mandriva.org> 0.1-1mdv2009.0
-+ Revision: 230135
-- fix group, remove unused patch
-- import python-gpgme
-
 
