@@ -4,7 +4,7 @@
 
 Name:           python-gpgme
 Version:        0.1
-Release:        %mkrel 4
+Release:        5
 Summary:        Python module for working with OpenPGP messages
 
 Group:          Development/Python
