@@ -5,7 +5,7 @@
 Summary:	Python module for working with OpenPGP messages
 Name:		python-gpgme
 Version:	0.1
-Release:	8
+Release:	9
 Group:		Development/Python
 License:	LGPLv2+
 Url:		http://cheeseshop.python.org/pypi/pygpgme/0.1
