@@ -14,7 +14,7 @@ Source0:	http://cheeseshop.python.org/packages/source/p/%{mname}/%{mname}-%{vers
 # https://bugs.launchpad.net/pygpgme/+bug/452194
 Patch0:		python-gpgme-0.1-fix-gpgme-initialization.patch
 BuildRequires:	gpgme-devel
-BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python2)
 
 %description
 PyGPGME is a Python module that lets you sign, verify, encrypt and decrypt
@@ -26,15 +26,15 @@ the GPGME library.
 %patch0 -p0
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
+CFLAGS="$RPM_OPT_FLAGS" python2 setup.py build
 
 
 %install
-%{__python} setup.py install -O1 --skip-build --root %{buildroot}
+python2 setup.py install -O1 --skip-build --root %{buildroot}
 # No need to ship the tests
 rm -rf %{buildroot}%{python_sitearch}/gpgme/tests/
 
 %files
 %doc README PKG-INFO
-%{python_sitearch}/*
+%{python2_sitearch}/*
 
