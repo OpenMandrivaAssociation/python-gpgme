@@ -1,5 +1,5 @@
-%define python_compile_opt python -O -c "import compileall; compileall.compile_dir('.')"
-%define python_compile     python -c "import compileall; compileall.compile_dir('.')"
+%define python2_compile_opt python2 -O -c "import compileall; compileall.compile_dir('.')"
+%define python2_compile     python2 -c "import compileall; compileall.compile_dir('.')"
 %define mname pygpgme
 
 Summary:	Python module for working with OpenPGP messages
