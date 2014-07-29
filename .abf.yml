@@ -1,2 +1,4 @@
+removed_sources:
+  pygpgme-0.1.tar.gz: 78d90e61252fdab8fbd084530e5a34fbd580f676
 sources:
-  "pygpgme-0.1.tar.gz": 78d90e61252fdab8fbd084530e5a34fbd580f676
+  pygpgme-0.3.tar.gz: f8df35bd2705ac2e1642209fba732e6a42d03fd4
