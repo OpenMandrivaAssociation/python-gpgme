@@ -1,3 +1,5 @@
+%define _build_pkgcheck_srpm %{nil}
+
 %define mname pygpgme
 %define _exclude_files_from_autoprov %{python2_sitearch}/.*\\.so
 %define _exclude_files_from_autoprov %{python_sitearch}/.*\\.so
