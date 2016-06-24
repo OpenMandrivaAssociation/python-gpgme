@@ -6,7 +6,7 @@
 
 Name:           python-gpgme
 Version:        0.3
-Release:        3
+Release:        4
 Summary:        Python module for working with OpenPGP messages
 License:        LGPLv2+
 Group:          Development/Python
