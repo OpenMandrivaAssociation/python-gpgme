@@ -6,7 +6,7 @@
 
 Name:           python-gpgme
 Version:        0.3
-Release:        5
+Release:        6
 Summary:        Python module for working with OpenPGP messages
 License:        LGPLv2+
 Group:          Development/Python
@@ -22,12 +22,12 @@ files using the OpenPGP format.  It is built on top of GNU Privacy Guard and
 the GPGME library.
 
 %package -n python2-gpgme
-Summary:	Python 3 module for working with OpenPGP messages
+Summary:	Python 2 module for working with OpenPGP messages
 Group:		Development/Python
 BuildRequires:	pkgconfig(python2)
 
 %description -n python2-gpgme
-PyGPGME is a Python 3 module that lets you sign, verify, encrypt and decrypt
+PyGPGME is a Python 2 module that lets you sign, verify, encrypt and decrypt
 files using the OpenPGP format.  It is built on top of GNU Privacy Guard and
 the GPGME library.
 
