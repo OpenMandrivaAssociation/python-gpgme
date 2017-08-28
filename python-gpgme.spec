@@ -6,13 +6,25 @@
 
 Name:           python-gpgme
 Version:        0.3
-Release:        6
+Release:        7
 Summary:        Python module for working with OpenPGP messages
 License:        LGPLv2+
 Group:          Development/Python
 URL:            https://launchpad.net/pygpgme
 Source0:        https://pypi.python.org/packages/source/p/%{mname}/%{mname}-%{version}.tar.gz
 Source100:      python-gpgme.rpmlintrc
+
+# Upstream is dead, but Fedora maintains a fork
+# All patches tracked at: https://pagure.io/pygpgme
+# Patches for working with gnupg >= 2.1
+Patch0001:      0001-reflect-2.1-reporting-for-key-imports.patch
+Patch0002:      0002-passphrase_cb-is-deprecated.patch
+Patch0003:      0003-handle-generic-error-when-no-passphrase-callback-pre.patch
+Patch0004:      0004-add-pubkey_algo-and-hash_algo-attributes-to-signatur.patch
+Patch0005:      0005-add-ENCRYPT_NO_ENCRYPT_TO-constant.patch
+Patch0006:      0006-ignore-STATUS_KEY_CONSIDERED-when-editing.patch
+
+
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  gpgme-devel
 
@@ -33,6 +45,8 @@ the GPGME library.
 
 %prep
 %setup -q -n %{mname}-%{version}
+%apply_patches
+
 cp -a . %{py3dir} 
 
 %build
@@ -60,9 +74,4 @@ rm -rf %buildroot/%{python_sitearch}/gpgme/tests/
 
 %files -n python2-gpgme
 %{python2_sitearch}/*
-
-
-
-
-
 
