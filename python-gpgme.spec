@@ -1,12 +1,12 @@
 %define _build_pkgcheck_srpm %{nil}
 
 %define mname pygpgme
-%define _exclude_files_from_autoprov %{python2_sitearch}/.*\\.so
-%define _exclude_files_from_autoprov %{python_sitearch}/.*\\.so
+# Do not check .so files in the pythonX_sitearch directory for provides
+%global __provides_exclude_from ^(%{python2_sitearch}/.*\\.so|%{python3_sitearch}/.*\\.so)$
 
 Name:           python-gpgme
 Version:        0.3
-Release:        10
+Release:        11
 Summary:        Python module for working with OpenPGP messages
 License:        LGPLv2+
 Group:          Development/Python
@@ -26,6 +26,7 @@ Patch0006:      0006-ignore-STATUS_KEY_CONSIDERED-when-editing.patch
 
 
 BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(python2)
 BuildRequires:  gpgme-devel
 
 %description
@@ -44,16 +45,16 @@ files using the OpenPGP format.  It is built on top of GNU Privacy Guard and
 the GPGME library.
 
 %prep
-%setup -q -n %{mname}-%{version}
-%apply_patches
+%autosetup -q -n %{mname}-%{version} -p1
 
 cp -a . %{py3dir} 
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" python2 setup.py build
+%setup_compile_flags
+CFLAGS="%{optflags}" python2 setup.py build
 
 pushd %{py3dir} 
-CFLAGS="$RPM_OPT_FLAGS" python setup.py build
+CFLAGS="%{optflags}" python setup.py build
 popd
 
 
@@ -66,7 +67,6 @@ python2 setup.py install -O1 --skip-build --root %{buildroot}
 # No need to ship the tests
 rm -rf %buildroot/%{python2_sitearch}/gpgme/tests/
 rm -rf %buildroot/%{python_sitearch}/gpgme/tests/
-
 
 %files
 %doc README PKG-INFO
