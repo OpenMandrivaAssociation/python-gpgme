@@ -45,7 +45,7 @@ files using the OpenPGP format.  It is built on top of GNU Privacy Guard and
 the GPGME library.
 
 %prep
-%autosetup -q -n %{mname}-%{version} -p1
+%autosetup -n %{mname}-%{version} -p1
 
 cp -a . %{py3dir} 
 
