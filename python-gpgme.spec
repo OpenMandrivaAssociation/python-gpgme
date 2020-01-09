@@ -6,7 +6,7 @@
 
 Name:           python-gpgme
 Version:        0.3
-Release:        12
+Release:        13
 Summary:        Python module for working with OpenPGP messages
 License:        LGPLv2+
 Group:          Development/Python
@@ -23,7 +23,6 @@ Patch0003:      0003-handle-generic-error-when-no-passphrase-callback-pre.patch
 Patch0004:      0004-add-pubkey_algo-and-hash_algo-attributes-to-signatur.patch
 Patch0005:      0005-add-ENCRYPT_NO_ENCRYPT_TO-constant.patch
 Patch0006:      0006-ignore-STATUS_KEY_CONSIDERED-when-editing.patch
-
 
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(python2)
@@ -54,7 +53,7 @@ cp -a . %{py3dir}
 CFLAGS="%{optflags}" python2 setup.py build
 
 pushd %{py3dir} 
-CFLAGS="%{optflags}" python setup.py build
+CFLAGS="%{optflags} -lpython%{pyver}" python setup.py build
 popd
 
 
