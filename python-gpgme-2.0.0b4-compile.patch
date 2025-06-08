@@ -1,0 +1,15 @@
+diff -up python-gpgme-2.0.0~b4/gpgme.i.omv~ python-gpgme-2.0.0~b4/gpgme.i
+--- python-gpgme-2.0.0~b4/gpgme.i.omv~	2025-06-08 16:39:43.198758675 +0200
++++ python-gpgme-2.0.0~b4/gpgme.i	2025-06-08 16:40:41.626927933 +0200
+@@ -618,6 +618,11 @@ struct _gpgme_sig_notation
+ 
+ %include "errors.i"
+ 
++%{
++struct _gpgme_trust_item;
++typedef struct _gpgme_trust_item *gpgme_trust_item_t;
++%}
++
+ /* Generating and handling pointers-to-pointers.  */
+ 
+ %pointer_functions(gpgme_ctx_t, gpgme_ctx_t_p);
