@@ -9,6 +9,7 @@ URL:		https://pypi.org/project/gpgme/
 License:	LGPL2.1+ (the library), GPL2+ (tests and examples)
 Group:		Development/Python
 BuildRequires:	python
+BuildRequires:	pkgconfig(gpgme)
 BuildSystem:	python
 
 %patchlist
