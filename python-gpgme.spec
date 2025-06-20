@@ -10,6 +10,7 @@ License:	LGPL2.1+ (the library), GPL2+ (tests and examples)
 Group:		Development/Python
 BuildRequires:	python
 BuildRequires:	pkgconfig(gpgme)
+BuildRequires:  swig
 BuildSystem:	python
 
 %patchlist
