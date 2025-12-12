@@ -2,7 +2,7 @@
 
 Name:		python-gpgme
 Version:	2.0.0%{?beta:~%{beta}}
-Release:	1
+Release:	2
 Source0:	https://files.pythonhosted.org/packages/source/g/gpgme/gpgme-%(echo %{version} |sed -e 's,~,,').tar.gz
 Summary:	Python bindings to the GPGME API of the GnuPG cryptography library.
 URL:		https://pypi.org/project/gpgme/
