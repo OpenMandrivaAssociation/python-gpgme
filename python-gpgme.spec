@@ -27,6 +27,7 @@ python-gpgme-COPY_FILES.patch
 python-gpgme-no-beta-suffix.patch
 python-gpgme-pep621-pyproject.patch
 python-gpgme-2.0.0b4-compile.patch
+python-gpgme-2.0.0-python315.patch
 
 %description
 Python bindings to the GPGME API of the GnuPG cryptography library.
