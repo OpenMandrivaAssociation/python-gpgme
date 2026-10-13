@@ -16,7 +16,7 @@ BuildRequires:	libtool-base
 BuildRequires:	pkgconfig
 BuildRequires:  pkgconfig(gpg-error)
 BuildRequires:	pkgconfig(gpgme)
-BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python3)
 BuildRequires:	python%{pyver}dist(pip)
 BuildRequires:	python%{pyver}dist(setuptools)
 BuildRequires:	python%{pyver}dist(wheel)
